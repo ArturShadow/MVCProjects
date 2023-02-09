@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace WebApp1.Models.DB;
+namespace WebApp1.Models.SQLServer;
 
 public partial class Tid81dContext : DbContext
 {
@@ -22,15 +22,14 @@ public partial class Tid81dContext : DbContext
     public virtual DbSet<Sexo> Sexos { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=localhost,1433;Database=TID81D;uid=sa;Password=Sh1roubon#;TrustServerCertificate=true;");
-       
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlServer("Server=DESKTOP-R5M3G5U\\SQLEXPRESS; Database=TID81D; TrustServerCertificate=True; Integrated Security=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Cliente>(entity =>
         {
-            entity.HasKey(e => e.IdCliente).HasName("PK__Cliente__885457EE5ED7236F");
+            entity.HasKey(e => e.IdCliente).HasName("PK__Cliente__885457EEB1C39B78");
 
             entity.ToTable("Cliente");
 
@@ -68,7 +67,7 @@ public partial class Tid81dContext : DbContext
 
         modelBuilder.Entity<Empleado>(entity =>
         {
-            entity.HasKey(e => e.IdEmpleado).HasName("PK__Empleado__5295297CE78829AA");
+            entity.HasKey(e => e.IdEmpleado).HasName("PK__Empleado__5295297C8D87AECD");
 
             entity.ToTable("Empleado");
 
@@ -112,7 +111,7 @@ public partial class Tid81dContext : DbContext
 
         modelBuilder.Entity<Sexo>(entity =>
         {
-            entity.HasKey(e => e.IdSexo).HasName("PK__Sexo__C5AFCD4D5E6B5860");
+            entity.HasKey(e => e.IdSexo).HasName("PK__Sexo__C5AFCD4D30A9726D");
 
             entity.ToTable("Sexo");
 

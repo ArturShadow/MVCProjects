@@ -15,7 +15,8 @@ namespace WebApp1.Controllers
         public IActionResult Index()
         {
             List<ClienteCLS> listaCliente = new List<ClienteCLS>();
-            using (var bd = new Models.DB.Tid81dContext())
+            //using (var bd = new Models.DB.Tid81dContext())
+            using (var bd = new Models.SQLServer.Tid81dContext())
             {
 
                 listaCliente = (from c in bd.Clientes
