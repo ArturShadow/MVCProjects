@@ -1,18 +1,16 @@
-@*Pedimos el namespace de Models*@
-@using WebApp1.Models 
-@* Recibimos el modelo desde el controlador*@
-@model List<ClienteCLS> 
+@using WebApp1.Models
+@model List<Empleado>
 @{
-    ViewBag.Title = "Clientes";
+    ViewData["Title"] = "Lista Empleado";
 }
 
-<h1>Lista de clientes</h1>
-@*Codigo HTML para mostrar una tabla para la lista de clientes*@
-<table class="table table-dark">
+<h1>@ViewData["Title"]</h1>
+
+<table class="table table-darkaz">
     <thead>
         <tr>
             @*Se reprenta el nombre de cada campo, se muestra el nombre que pusimos en la clase ClienteCLS con Data Annotation para cada uno*@
-            <td>@Html.LabelFor(p => Model[0].IdCliente)</td>
+            <td>@Html.LabelFor(p => Model[0].IdEmpleado)</td>
             <td>@Html.LabelFor(p => Model[0].Nombre)</td>
             <td>@Html.LabelFor(p => Model[0].APaterno)</td>
             <td>@Html.LabelFor(p => Model[0].AMaterno)</td>
@@ -20,13 +18,15 @@
             <td>@Html.LabelFor(p => Model[0].Direccion)</td>
             @* <td>@Html.LabelFor(p => Model[0].Sexo)</td> *@
             <td>@Html.LabelFor(p => Model[0].Telefono)</td>
+            <td>@Html.LabelFor(p => Model[0].FechaContrato)</td>
+            <td>@Html.LabelFor(p => Model[0].Sueldo)</td>            
         </tr>
     </thead>
     <tbody>
         @foreach(var item in Model) //Mostramos los datos de cada cliente con un foreach
         {
             <tr>
-                <td>@item.IdCliente</td>
+                <td>@item.IdEmpleado</td>
                 <td>@item.Nombre</td>
                 <td>@item.APaterno</td>
                 <td>@item.AMaterno</td>
@@ -34,6 +34,8 @@
                 <td>@item.Direccion</td>
                 @* <td>@item.Sexo</td> *@
                 <td>@item.Telefono</td>
+                <td>@item.FechaContrato</td>
+                <td>@item.Sueldo</td>
             </tr>
         }
     </tbody>
