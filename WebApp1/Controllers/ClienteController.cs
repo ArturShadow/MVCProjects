@@ -16,7 +16,7 @@ namespace WebApp1.Controllers
         {
             //Creamos una lista para guardar la consulta para mostrar en la vista despues
             List<ClienteCLS>? listaCliente = null;
-            using (var bd = new Models.DB.Tid81dContext())
+            using (var bd = new Models.SQLServer.Tid81dContext())
             // using (var bd = new Models.SQLServer.Tid81dContext()) //Creamos una instancia del contexto de la base de datos
             {
 

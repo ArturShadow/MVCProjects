@@ -49,3 +49,21 @@ INSERT INTO Cliente(nombre,aPaterno,aMaterno,email,direccion,sexo,telefono) VALU
 INSERT INTO Empleado(nombre,aPaterno,aMaterno,email,direccion,sexo,telefono,fechaContrato,sueldo) VALUES ('Mariana','Garcia','Chacon','mgachon@gmail.com','C. Churubascos',2,'614-924-9447','2008-10-17',2640.20);
 INSERT INTO Empleado(nombre,aPaterno,aMaterno,email,direccion,sexo,telefono,fechaContrato,sueldo) VALUES ('Humberto','Jaquez','Villalobos','hjaqVillalobos@gmail.com','C. Taracos',1,'614-742-852-6468','2000-08-02',10000.42);
 
+
+CREATE TABLE Producto
+(idProducto int identity(1,1) not null,
+Descripcion  varchar(50),
+Precio    decimal(8,2),
+inventario int,
+Constraint PK_Producto Primary Key(idProducto)
+);
+select * from PRODUCTO
+
+ 
+
+insert into PRODUCTO values('Escoba magica',52.50,25)
+insert into PRODUCTO values('Cubeta de 5 ltos',67.25,50)
+insert into PRODUCTO values('Cepillo industrial',250.00,20)
+
+DROP table PRODUCTO;
+

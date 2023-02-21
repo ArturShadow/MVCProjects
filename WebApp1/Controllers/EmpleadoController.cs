@@ -16,7 +16,7 @@ namespace WebApp1.Controllers
         {
             List<Empleado>? listEmpleado = null;
 
-            using (var db = new Models.DB.Tid81dContext())
+            using (var db = new Models.SQLServer.Tid81dContext())
             {
                 listEmpleado = (from e in db.Empleados
                                 select new Empleado

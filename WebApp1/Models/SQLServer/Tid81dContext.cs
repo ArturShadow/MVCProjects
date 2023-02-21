@@ -18,12 +18,14 @@ public partial class Tid81dContext : DbContext
     public virtual DbSet<Cliente> Clientes { get; set; }
 
     public virtual DbSet<Empleado> Empleados { get; set; }
-    
+
+    public virtual DbSet<Producto> Productos { get; set; }
+
     public virtual DbSet<Sexo> Sexos { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=DESKTOP-R5M3G5U\\SQLEXPRESS;Database=TID81D;TrustServerCertificate=true; Integrated Security=True");
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlServer("Server=DESKTOP-R5M3G5U\\SQLEXPRESS; Database=TID81D; TrustServerCertificate=True; Integrated Security=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -107,6 +109,20 @@ public partial class Tid81dContext : DbContext
             entity.HasOne(d => d.SexoNavigation).WithMany(p => p.Empleados)
                 .HasForeignKey(d => d.Sexo)
                 .HasConstraintName("FK_Empleado");
+        });
+
+        modelBuilder.Entity<Producto>(entity =>
+        {
+            entity.HasKey(e => e.IdProducto);
+
+            entity.ToTable("Producto");
+
+            entity.Property(e => e.IdProducto).HasColumnName("idProducto");
+            entity.Property(e => e.Descripcion)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Inventario).HasColumnName("inventario");
+            entity.Property(e => e.Precio).HasColumnType("decimal(8, 2)");
         });
 
         modelBuilder.Entity<Sexo>(entity =>
