@@ -57,13 +57,13 @@ Precio    decimal(8,2),
 inventario int,
 Constraint PK_Producto Primary Key(idProducto)
 );
-select * from PRODUCTO
+select * from PRODUCTO;
 
  
 
-insert into PRODUCTO values('Escoba magica',52.50,25)
-insert into PRODUCTO values('Cubeta de 5 ltos',67.25,50)
-insert into PRODUCTO values('Cepillo industrial',250.00,20)
+insert into PRODUCTO values('Escoba magica',52.50,25);
+insert into PRODUCTO values('Cubeta de 5 ltos',67.25,50);
+insert into PRODUCTO values('Cepillo industrial',250.00,20);
 
 DROP table PRODUCTO;
 

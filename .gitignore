@@ -1,7 +1,8 @@
-**/**/Models/SQLServer
-**/**/Models/DB
-**/**/.vs/ProjectEvaluation
-**/**/.vs/WebApp1
-**/**/bin
-**/**/obj
+WebApp1/Models/SQLServer
+WebApp1/Models/DB
+**/.vs/ProjectEvaluation
 **/.vs/WebApp1
+**/bin
+**/obj
+**/.vs/WebApp1
+*.sh
