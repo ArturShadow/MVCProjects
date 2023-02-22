@@ -1,0 +1,37 @@
+@using WebApp1.Models
+@model List<Cliente>
+@{
+    ViewData["Title"] = "Lista Clientes";
+}
+
+<h2>@ViewData["Title"]</h2>
+<table class="table table-bodered table-dark table-hover">
+    <thead>
+        <tr>
+            <th>@Html.LabelFor(p => Model[0].IdCliente)</th>
+            <th>@Html.LabelFor(p => Model[0].Nombre)</th>
+            <th>@Html.LabelFor(p => Model[0].APaterno)</th>
+            <th>@Html.LabelFor(p => Model[0].AMaterno)</th>
+            <th>@Html.LabelFor(p => Model[0].Direccion)</th>
+            <th>@Html.LabelFor(p => Model[0].Email)</th>
+            <th>@Html.LabelFor(p => Model[0].Sexo)</th>
+            <th>@Html.LabelFor(p => Model[0].Telefono)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.IdCliente</td>
+            <td>@item.Nombre</td>
+            <td>@item.APaterno</td>
+            <td>@item.AMaterno</td>
+            <td>@item.Direccion</td>
+            <td>@item.Email</td>
+            <td>@item.Sexo</td>
+            <td>@item.Telefono</td>
+        </tr>
+            
+        }
+    </tbody>
+</table>
