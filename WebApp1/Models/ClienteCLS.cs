@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WebApp1.Models
 {
-    public class Cliente
+    public class ClienteCLS
     {
         [Display (Name = "Id cliente")]
         public int IdCliente { get; set; }

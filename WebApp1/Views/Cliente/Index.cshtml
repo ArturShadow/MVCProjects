@@ -1,10 +1,11 @@
 @using WebApp1.Models
-@model List<Cliente>
+@model List<ClienteCLS>
 @{
     ViewData["Title"] = "Lista Clientes";
 }
 
 <h2>@ViewData["Title"]</h2>
+@Html.ActionLink("Agregar","Agregar","Cliente");
 <table class="table table-bodered table-dark table-hover">
     <thead>
         <tr>
