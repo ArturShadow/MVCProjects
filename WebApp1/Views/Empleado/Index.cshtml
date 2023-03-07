@@ -1,0 +1,46 @@
+@page
+@using WebApp1.Models
+@model List<EmpleadoCLS>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1>@ViewBag.Title</h1>
+
+<table class="table table-bodered table-dark table-hover">
+    <thead>
+        <tr>
+            <th>@Html.LabelFor(p => Model[0].IdEmpleado)</th>
+            <th>@Html.LabelFor(p => Model[0].Nombre)</th>
+            <th>@Html.LabelFor(p => Model[0].APaterno)</th>
+            <th>@Html.LabelFor(p => Model[0].AMaterno)</th>
+            <th>@Html.LabelFor(p => Model[0].Direccion)</th>
+            <th>@Html.LabelFor(p => Model[0].Email)</th>
+            <th>@Html.LabelFor(p => Model[0].Sexo)</th>
+            <th>@Html.LabelFor(p => Model[0].Telefono)</th>
+            <th>@Html.LabelFor(p => Model[0].FechaContrato)</th>
+            <th>@Html.LabelFor(p => Model[0].Sueldo)</th>
+            <th>@Html.LabelFor(p => Model[0].TipoContrato)</th>
+            <th>@Html.LabelFor(p => Model[0].TipoUsuario)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.IdEmpleado</td>
+                <td>@item.Nombre</td>
+                <td>@item.APaterno</td>
+                <td>@item.AMaterno</td>
+                <td>@item.Direccion</td>
+                <td>@item.Email</td>
+                <td>@item.NombreSexo</td>
+                <td>@item.Telefono</td>
+                <td>@item.FechaContrato</td>
+                <td>@item.Sueldo</td>
+                <td>@item.NombreTipoContrato</td>
+                <td>@item.NombreTipoUsuario</td>
+            </tr>
+        }
+    </tbody>
+</table>

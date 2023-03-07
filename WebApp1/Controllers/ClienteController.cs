@@ -7,7 +7,8 @@ namespace WebApp1.Controllers
     [Route("[controller]")]
     public class ClienteController : Controller
     {
-
+    
+        [HttpGet("[action]")]
         public IActionResult Index()
         {
             List<ClienteCLS> listaCliente;
@@ -24,13 +25,14 @@ namespace WebApp1.Controllers
                                     Email = cliente.Email,
                                     Direccion = cliente.Direccion,
                                     Sexo = (int?)cliente.Sexo,
-                                    Telefono = cliente.Telefono
+                                    Telefono = cliente.Telefono,
+                                    
                                 }).ToList();
             }
             return View(listaCliente);
         }
         //Llenar el combobox de Sexo
-        List<SelectListItem> listaSexo;
+        List<SelectListItem>? listaSexo;
         private void LlenarSexo()
         {
             using (var db = new Tid81dContext())
