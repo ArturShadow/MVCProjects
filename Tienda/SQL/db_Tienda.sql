@@ -21,7 +21,7 @@ CREATE TABLE Articulos (
     PrecioUnitario DECIMAL,
     Stock INT,
     StockExtra INT,
-    imagen image,
+    -- imagen image,
     CONSTRAINT PK_Articulos PRIMARY KEY(CodArticulo)
 );
 

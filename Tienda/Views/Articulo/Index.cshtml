@@ -1,0 +1,32 @@
+@using Tienda.Models
+@model List<ArticuloCLS>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1>@ViewBag.Title</h1>
+
+<table class="table">
+    <thead>
+        <th>@Html.LabelFor(p => Model[0].CodArticulo)</th>
+        <th>@Html.LabelFor(p => Model[0].NombreArticulo)</th>
+        <th>@Html.LabelFor(p => Model[0].Descripcion)</th>
+        <th>@Html.LabelFor(p => Model[0].PrecioUnitario)</th>
+        <th>@Html.LabelFor(p => Model[0].Stock)</th>
+        <th>@Html.LabelFor(p => Model[0].StockExtra)</th>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.CodArticulo</td>
+                <td>@item.NombreArticulo</td>
+                <td>@item.Descripcion</td>
+                <td>@item.PrecioUnitario</td>
+                <td>@item.Stock</td>
+                <td>@item.StockExtra</td>
+            </tr>
+        }
+    </tbody>
+</table>
