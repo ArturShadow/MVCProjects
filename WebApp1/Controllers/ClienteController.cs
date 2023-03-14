@@ -57,8 +57,8 @@ namespace WebApp1.Controllers
             return View();
         }
 
-        [Route("Cliente/Agregar")]
-        [HttpPost("{oCliente}")]
+        
+        [HttpPost("[action]")]
         public ActionResult Agregar(ClienteCLS oCliente)
         {
             if (!ModelState.IsValid)

@@ -1,44 +1,44 @@
-@page
 @using WebApp1.Models
 @model List<EmpleadoCLS>
 @{
-    ViewBag.Title = "Index";
+    ViewData["Title"] = "Lista Empleado";
 }
 
-<h1>@ViewBag.Title</h1>
+<h1>@ViewData["Title"]</h1>
 
-<table class="table table-bodered table-dark table-hover">
+<table class="table table-darkaz">
     <thead>
         <tr>
-            <th>@Html.LabelFor(p => Model[0].IdEmpleado)</th>
-            <th>@Html.LabelFor(p => Model[0].Nombre)</th>
-            <th>@Html.LabelFor(p => Model[0].APaterno)</th>
-            <th>@Html.LabelFor(p => Model[0].AMaterno)</th>
-            <th>@Html.LabelFor(p => Model[0].Direccion)</th>
-            <th>@Html.LabelFor(p => Model[0].Email)</th>
-            <th>@Html.LabelFor(p => Model[0].Sexo)</th>
-            <th>@Html.LabelFor(p => Model[0].Telefono)</th>
-            <th>@Html.LabelFor(p => Model[0].FechaContrato)</th>
-            <th>@Html.LabelFor(p => Model[0].Sueldo)</th>
-            <th>@Html.LabelFor(p => Model[0].TipoContrato)</th>
-            <th>@Html.LabelFor(p => Model[0].TipoUsuario)</th>
+            @*Se reprenta el nombre de cada campo, se muestra el nombre que pusimos en la clase ClienteCLS con Data Annotation para cada uno*@
+            <td>@Html.LabelFor(p => Model[0].IdEmpleado)</td>
+            <td>@Html.LabelFor(p => Model[0].Nombre)</td>
+            <td>@Html.LabelFor(p => Model[0].APaterno)</td>
+            <td>@Html.LabelFor(p => Model[0].AMaterno)</td>
+            <td>@Html.LabelFor(p => Model[0].Email)</td>
+            <td>@Html.LabelFor(p => Model[0].Direccion)</td>
+            <td>@Html.LabelFor(p => Model[0].Sexo)</td>
+            <td>@Html.LabelFor(p => Model[0].Telefono)</td>
+            <td>@Html.LabelFor(p => Model[0].TipoContrato)</td>            
+            <td>@Html.LabelFor(p => Model[0].FechaContrato)</td>
+            <td>@Html.LabelFor(p => Model[0].Sueldo)</td>            
+            <td>@Html.LabelFor(p => Model[0].TipoUsuario)</td>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @foreach(var item in Model) //Mostramos los datos de cada cliente con un foreach
         {
             <tr>
                 <td>@item.IdEmpleado</td>
                 <td>@item.Nombre</td>
                 <td>@item.APaterno</td>
                 <td>@item.AMaterno</td>
-                <td>@item.Direccion</td>
                 <td>@item.Email</td>
+                <td>@item.Direccion</td>
                 <td>@item.NombreSexo</td>
                 <td>@item.Telefono</td>
+                <td>@item.NombreTipoContrato</td>
                 <td>@item.FechaContrato</td>
                 <td>@item.Sueldo</td>
-                <td>@item.NombreTipoContrato</td>
                 <td>@item.NombreTipoUsuario</td>
             </tr>
         }

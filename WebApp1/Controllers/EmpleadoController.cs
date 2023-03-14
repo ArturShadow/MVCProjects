@@ -14,13 +14,14 @@ namespace WebApp1.Controllers
     {
         public IActionResult Index()
         {
-            List<EmpleadoCLS>? listaEmpleado = null;
+            List<EmpleadoCLS>? listEmpleado = null;
+
             using (var db = new Models.DB.Tid81dContext())
             {
-                listaEmpleado = (from empleado in db.Empleados
-                                join Sexo in db.Sexos on empleado.Sexo equals Sexo.IdSexo
-                                join TipoContrato in db.TipoContratos on empleado.TipoContrato equals TipoContrato.IdTipoContrato
-                                join TipoUsuario in db.TipoUsuarios on empleado.TipoUsuario equals TipoUsuario.IdTipoUsuario
+                listEmpleado = (from empleado in db.Empleados
+                                join sexo in db.Sexos on empleado.Sexo equals sexo.IdSexo
+                                join tipoUsuario in db.TipoUsuarios on empleado.TipoUsuario equals tipoUsuario.IdTipoUsuario
+                                join tipoContrato in db.TipoContratos on empleado.TipoContrato equals tipoContrato.IdTipoContrato
                                 select new EmpleadoCLS
                                 {
                                     IdEmpleado = empleado.IdEmpleado,
@@ -29,18 +30,16 @@ namespace WebApp1.Controllers
                                     AMaterno = empleado.AMaterno,
                                     Email = empleado.Email,
                                     Direccion = empleado.Direccion,
-                                    NombreSexo = Sexo.Descripcion,
-                                    //Sexo=empleado.Sexo,
+                                    // Sexo = empleado.Sexo,
+                                    NombreSexo = sexo.Descripcion,
                                     Telefono = empleado.Telefono,
-                                    FechaContrato = (DateOnly?)empleado.FechaContrato,
-                                    Sueldo = (decimal?)empleado.Sueldo,
-                                    NombreTipoContrato = TipoContrato.Descripcion,
-                                    //TipoContrato = (int?)empleado.TipoContrato,
-                                    NombreTipoUsuario = TipoUsuario.Descripcion
-                                    //TipoUsuario = (int?)empleado.TipoUsuario
+                                    FechaContrato = empleado.FechaContrato,
+                                    Sueldo = empleado.Sueldo,
+                                    NombreTipoUsuario = tipoUsuario.Descripcion,
+                                    NombreTipoContrato = tipoContrato.Descripcion
                                 }).ToList();
             }
-            return View(listaEmpleado);
+            return View(listEmpleado);
         }
     }
 }

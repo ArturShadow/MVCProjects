@@ -9,49 +9,49 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = WebApp1
 build_property.RootNamespace = WebApp1
-build_property.ProjectDir = /home/kurobon/dev/MVCProjects/WebApp1/
+build_property.ProjectDir = p:\Projects\C#\MVCProjects\WebApp1\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /home/kurobon/dev/MVCProjects/WebApp1
+build_property.MSBuildProjectDirectory = p:\Projects\C#\MVCProjects\WebApp1
 build_property._RazorSourceGeneratorDebug = 
 
-[/home/kurobon/dev/MVCProjects/WebApp1/Views/Cliente/Agregar.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2xpZW50ZS9BZ3JlZ2FyLmNzaHRtbA==
+[p:/Projects/C\#/MVCProjects/WebApp1/Views/Cliente/Agregar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZVxBZ3JlZ2FyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/kurobon/dev/MVCProjects/WebApp1/Views/Cliente/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2xpZW50ZS9JbmRleC5jc2h0bWw=
+[p:/Projects/C\#/MVCProjects/WebApp1/Views/Cliente/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/kurobon/dev/MVCProjects/WebApp1/Views/Empleado/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRW1wbGVhZG8vSW5kZXguY3NodG1s
+[p:/Projects/C\#/MVCProjects/WebApp1/Views/Empleado/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbGVhZG9cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/kurobon/dev/MVCProjects/WebApp1/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
+[p:/Projects/C\#/MVCProjects/WebApp1/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/kurobon/dev/MVCProjects/WebApp1/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
+[p:/Projects/C\#/MVCProjects/WebApp1/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/kurobon/dev/MVCProjects/WebApp1/Views/Shared/Error.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
+[p:/Projects/C\#/MVCProjects/WebApp1/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/kurobon/dev/MVCProjects/WebApp1/Views/Shared/_ValidationScriptsPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+[p:/Projects/C\#/MVCProjects/WebApp1/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/kurobon/dev/MVCProjects/WebApp1/Views/_ViewImports.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+[p:/Projects/C\#/MVCProjects/WebApp1/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/kurobon/dev/MVCProjects/WebApp1/Views/_ViewStart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
+[p:/Projects/C\#/MVCProjects/WebApp1/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/kurobon/dev/MVCProjects/WebApp1/Views/Shared/_Layout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = b-sag9vnd9bm
+[p:/Projects/C\#/MVCProjects/WebApp1/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-pu61qw1s5v
