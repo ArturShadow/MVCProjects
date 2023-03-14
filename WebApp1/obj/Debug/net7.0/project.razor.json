@@ -18690,6 +18690,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "p:\\Projects\\C#\\MVCProjects\\WebApp1\\Views\\Empleado\\Agregar.cshtml",
+      "TargetPath": "Views\\Empleado\\Agregar.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "p:\\Projects\\C#\\MVCProjects\\WebApp1\\Views\\Shared\\_Layout.cshtml",
       "TargetPath": "Views\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"

@@ -1,14 +1,16 @@
 @page
-@model WebApp1.Models.ClienteCLS
+@model WebApp1.Models.EmpleadoCLS
 
 
 @{
     ViewBag.Title = "Agregar";
-    List<SelectListItem> listaSexo = (List<SelectListItem>) ViewBag.lista;
+    List<SelectListItem> listaTC = (List<SelectListItem>) ViewBag.listaTC;
+    List<SelectListItem> listaSexo = (List<SelectListItem>) ViewBag.listaSexo;
+    List<SelectListItem> listaTU = (List<SelectListItem>) ViewBag.listaTU;
 }
 
 <h1>@ViewBag.Title</h1>
-
+@try{
 <div class="row">
     <div class="col">
         @using (Html.BeginForm("Agregar","Cliente",FormMethod.Post))
@@ -42,6 +44,28 @@
                 @Html.LabelFor(p => p.Telefono , new {@class="form-label"})
                 @Html.TextBoxFor(p => p.Telefono, new {@class="form-control"})
             </div>
+            <div>
+                @Html.LabelFor(p => p.Sueldo , new {@class="form-label"})
+                @Html.TextBoxFor(p => p.Sueldo, new {@class="form-control"})
+            </div>
+            <div>
+                @Html.LabelFor(p => p.FechaContrato , new {@class="form-label"})
+                @Html.TextBoxFor(p => p.FechaContrato, new {@class="form-control"})
+            </div>
+            <div>
+                @Html.LabelFor(p => p.TipoContrato , new {@class="form-label"})
+                @Html.DropDownListFor(p => p.TipoContrato,listaTC, new {@class="form-control"})
+            </div>
+            <div>
+                @Html.LabelFor(p => p.TipoUsuario , new {@class="form-label"})
+                @Html.DropDownListFor(p => p.TipoUsuario,listaTU, new {@class="form-control"})
+            </div>
         }
     </div>
 </div>
+}
+catch (Exception e)
+{
+    
+    <p>@e.Message</p>
+}

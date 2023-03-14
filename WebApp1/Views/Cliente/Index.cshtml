@@ -1,10 +1,10 @@
 @using WebApp1.Models
 @model List<ClienteCLS>
 @{
-    ViewData["Title"] = "Lista Clientes";
+    ViewBag.Title = "Lista Clientes";
 }
 
-<h2>@ViewData["Title"]</h2>
+<h2>@ViewBag.Title</h2>
 <a asp-controller="Cliente" asp-action="Agregar" class="btn btn-dark">Agregar Cliente</a>
 <table class="table table-bodered table-dark table-hover    ">
     <thead>
