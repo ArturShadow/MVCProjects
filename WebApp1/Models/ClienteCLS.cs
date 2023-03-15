@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WebApp1.Models
 {
-    public class ClienteCLS
+    public class ClienteCLS 
     {
         [Display (Name = "Id cliente")]
         public int IdCliente { get; set; }
@@ -43,5 +43,7 @@ namespace WebApp1.Models
         [Required]
         [StringLength(16,ErrorMessage = "La longitud es de 16")]
         public String? Telefono  { get; set; }
+
+        public String? Descripcion { get; set;}
     }
 }

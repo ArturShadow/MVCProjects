@@ -87,16 +87,42 @@ namespace WebApp1.Controllers
         private void LlenarCampos(){
             LlenarListaTC();
             LlenarListaSexo();
-            LlenarListaSexo();
-            
-        }
-
-        public IActionResult Agregar(){
-            LlenarCampos();
+            LlenarListaTU();
             ViewBag.listaTC = listaTC;
             ViewBag.listaSexo = listaSexo;
             ViewBag.listaTU = listaTU;
+        }
+
+        [HttpGet("[action]")]
+        public IActionResult Agregar(){
+            LlenarCampos();
+            
             return View();
+        }
+        [HttpPost("[action]")]
+        public IActionResult Agregar(EmpleadoCLS oEmpleado){
+            if(!ModelState.IsValid){
+                LlenarCampos();
+                return View(oEmpleado);
+            }
+            using(var db = new Tid81dContext()){
+                Empleado empleado = new Empleado();
+                empleado.IdEmpleado = oEmpleado.IdEmpleado;
+                empleado.Nombre = oEmpleado.Nombre;
+                empleado.APaterno = oEmpleado.APaterno;
+                empleado.AMaterno = oEmpleado.AMaterno;
+                empleado.Direccion = oEmpleado.Direccion;
+                empleado.Email = oEmpleado.Email;
+                empleado.Sexo = oEmpleado.Sexo;
+                empleado.Telefono = oEmpleado.Telefono;
+                empleado.FechaContrato = oEmpleado.FechaContrato;
+                empleado.Sueldo = oEmpleado.Sueldo;
+                empleado.TipoContrato = oEmpleado.TipoContrato;
+                empleado.TipoUsuario = oEmpleado.TipoUsuario;
+                db.Empleados.Add(empleado);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
         }
     }
 }

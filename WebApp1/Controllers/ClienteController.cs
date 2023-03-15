@@ -16,6 +16,7 @@ namespace WebApp1.Controllers
             using (var db = new Tid81dContext())
             {
                 listaCliente = (from cliente in db.Clientes
+                                join sexo in db.Sexos on cliente.Sexo equals sexo.IdSexo
                                 select new ClienteCLS
                                 {
                                     IdCliente = cliente.IdCliente,
@@ -24,7 +25,7 @@ namespace WebApp1.Controllers
                                     AMaterno = cliente.AMaterno,
                                     Email = cliente.Email,
                                     Direccion = cliente.Direccion,
-                                    Sexo = (int?)cliente.Sexo,
+                                    Descripcion = sexo.Descripcion,
                                     Telefono = cliente.Telefono,
                                     
                                 }).ToList();
@@ -47,19 +48,19 @@ namespace WebApp1.Controllers
             }
         }
 
-        public ActionResult Agregar()
+        [HttpGet("[action]")]
+        public IActionResult Agregar()
         {
             // Llamamos al metodo LlenarSexo
             LlenarSexo();
             // Le pasamos la lista de sexos a la vista
             ViewBag.lista = listaSexo;
-
             return View();
         }
 
         
         [HttpPost("[action]")]
-        public ActionResult Agregar(ClienteCLS oCliente)
+        public IActionResult Agregar(ClienteCLS oCliente)
         {
             if (!ModelState.IsValid)
             {

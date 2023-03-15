@@ -1,9 +1,7 @@
 @page
 @model WebApp1.Models.ClienteCLS
-
-
 @{
-    ViewBag.Title = "Agregar";
+    ViewBag.Title = "Agregar Cliente";
     List<SelectListItem> listaSexo = (List<SelectListItem>) ViewBag.lista;
 }
 
@@ -16,31 +14,41 @@
             <div>
                 @Html.LabelFor(p => p.Nombre , new {@class="form-label"})
                 @Html.TextBoxFor(p => p.Nombre, new {@class="form-control"})
+                @Html.ValidationMessageFor(p => Model.Nombre)
             </div>
             <div>
                 @Html.LabelFor(p => p.APaterno , new {@class="form-label"})
                 @Html.TextBoxFor(p => p.APaterno, new {@class="form-control"})
+                @Html.ValidationMessageFor(p => Model.APaterno)
             </div>
             <div>
                 @Html.LabelFor(p => p.AMaterno , new {@class="form-label"})
                 @Html.TextBoxFor(p => p.AMaterno, new {@class="form-control"})
+                @Html.ValidationMessageFor(p => Model.AMaterno)
             </div>
             <div>
                 @Html.LabelFor(p => p.Email , new {@class="form-label"})
                 @Html.TextBoxFor(p => p.Email, new {@class="form-control"})
+                @Html.ValidationMessageFor(p => Model.Email)
             </div>
             <div>
                 @Html.LabelFor(p => p.Direccion , new {@class="form-label"})
                 @Html.TextBoxFor(p => p.Direccion, new {@class="form-control"})
+                @Html.ValidationMessageFor(p => Model.Direccion)
             </div>
 
             <div>
                 @Html.LabelFor(p => p.Sexo , new {@class="form-label"})
                 @Html.DropDownListFor(p => p.Sexo, listaSexo, new {@class="form-control"})
+                @Html.ValidationMessageFor(p => Model.Sexo)
             </div>
             <div>
                 @Html.LabelFor(p => p.Telefono , new {@class="form-label"})
                 @Html.TextBoxFor(p => p.Telefono, new {@class="form-control"})
+                @Html.ValidationMessageFor(p => Model.Telefono)
+            </div>
+            <div>
+                <button type="submit" class="btn btn-dark">Guardar</button>
             </div>
         }
     </div>
