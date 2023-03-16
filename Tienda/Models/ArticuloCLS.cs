@@ -32,5 +32,8 @@ namespace Tienda.Models
         [Display(Name = "Existencia de seguridad")]
         [Required]
         public int? StockExtra { get; set; }
+
+        [Display(Name = "imagen")]
+        public byte[]? Imagen { get; set; }
     }
 }

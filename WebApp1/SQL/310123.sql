@@ -67,40 +67,37 @@ insert into Productos values('Cepillo industrial',250.00,20);
 
 --DROP table Productos;
 
-CREATE TABLE TipoContrato (
+CREATE TABLE TipoContrato ( --Creacion de la tabla para tipos de contratos
     IdTipoContrato INT NOT NULL IDENTITY(1,1),
     Descripcion VARCHAR(50),
     PRIMARY KEY(IdTipoContrato) 
 );
 
-DROP table TipoUsuarios;
 
-CREATE TABLE TipoUsuario (
+CREATE TABLE TipoUsuario ( -- Creacion de la tabla de los tipos usuarios
     IdTipoUsuario INT NOT NULL IDENTITY(1,1),
     Descripcion VARCHAR(50),
     PRIMARY KEY(IdTipoUsuario) 
 );
 
+-- Agregamos los campoa de tipo contrato y tipo usuario a la tabla Empleados
 ALTER Table Empleados
 ADD TipoContrato INT FOREIGN KEY(TipoContrato) REFERENCES TipoContrato(IdTipoContrato);
 
 ALTER Table Empleados
 ADD TipoUsuario INT FOREIGN KEY(TipoUsuario) REFERENCES TipoUsuario(IdTipoUsuario);
 
---DROP database TID81D;
-
-drop table Clientes, Empleados, Producto, Sexo, TipoContrato, TipoUsuario, Sexo;
-
---use master;
-
-
+-- Agregmos tipos de contrato y usurio en su tabla correspondiente
 INSERT INTO TipoContrato VALUES('Por horas');
 INSERT INTO TipoContrato VALUES('Tiempo Completo');
 INSERT INTO TipoContrato VALUES ('Indeterminado');
-
 INSERT INTO TipoUsuario VALUES ('Administrador');
-INSERT INTO TipoUsuario(Descripcion) VALUES ('Tecnico');
+INSERT INTO TipoUsuario VALUES ('Tecnico');
 INSERT INTO TipoUsuario VALUES ('Vendedor');
 
+-- Agregamos los tipos de contrato y usuario en cada empleado para hacer la relacion con las tablas
 UPDATE Empleados SET TipoContrato = 2, TipoUsuario = 1 WHERE idEmpleado = 1;
 UPDATE Empleados SET TipoContrato = 3, TipoUsuario = 2 WHERE idEmpleado = 2;
+
+
+

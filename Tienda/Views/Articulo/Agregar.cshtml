@@ -1,0 +1,49 @@
+@page
+@using Tienda.Models
+@model ArticuloCLS
+@{
+    ViewBag.Title = "Agregar articulos";
+}
+
+<h1>@ViewBag.Title</h1>
+
+<div class="container container-fluid">
+    @try{
+        @using (Html.BeginForm("Agregar","Articulo",FormMethod.Post, new { enctype="multipart/form-data" }))
+        {
+            <div class="row">
+                <div class="col-md-6">
+                    @Html.LabelFor(p => p.NombreArticulo,new {@class="form-label"})
+                    @Html.TextBoxFor(p=> p.NombreArticulo, new {@class="form-control"})
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(p => p.Descripcion,new {@class="form-label"})
+                    @Html.TextBoxFor(p=> p.Descripcion, new {@class="form-control"})
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(p => p.PrecioUnitario,new {@class="form-label"})
+                    @Html.TextBoxFor(p=> p.PrecioUnitario, new {@class="form-control"})
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(p => p.Stock,new {@class="form-label"})
+                    @Html.TextBoxFor(p=> p.Stock,new {@class="form-control", type = "number", min=0})
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(p => p.StockExtra,new {@class="form-label"})
+                    @Html.TextBoxFor(p=> p.StockExtra,new {@class="form-control",type = "number", min=0})
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(p => p.Imagen, new {@class="form-label"})
+                    @Html.TextBoxFor(p => p.Imagen,"" , new {type = "file",accept=".jpg"})
+                </div>
+                <dir>
+                    <button type="submit">Enviar</button>
+                </dir>
+            </div>
+        }
+    }
+    catch(ArgumentOutOfRangeException ex)
+    {
+        <p>@ex.Message</p>
+    }
+</div>

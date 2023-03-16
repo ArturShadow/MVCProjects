@@ -23,7 +23,7 @@ public partial class TiendaContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=localhost,1433;Database=Tienda;User ID=sa;Password=Sh1roubon#;TrustServerCertificate=true;");
+        => optionsBuilder.UseSqlServer("Server=DESKTOP-R5M3G5U\\SQLEXPRESS;Database=Tienda;TrustServerCertificate=true; Integrated Security=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -34,10 +34,11 @@ public partial class TiendaContext : DbContext
             entity.Property(e => e.Descripcion)
                 .HasMaxLength(250)
                 .IsUnicode(false);
+            entity.Property(e => e.Imagen).HasColumnName("imagen");
             entity.Property(e => e.NombreArticulo)
                 .HasMaxLength(100)
                 .IsUnicode(false);
-            entity.Property(e => e.PrecioUnitario).HasColumnType("decimal(18, 0)");
+            entity.Property(e => e.PrecioUnitario).HasColumnType("decimal(5, 2)");
         });
 
         modelBuilder.Entity<Cliente>(entity =>
@@ -61,7 +62,7 @@ public partial class TiendaContext : DbContext
                 .HasMaxLength(60)
                 .IsUnicode(false);
             entity.Property(e => e.Puesto)
-                .HasMaxLength(20)
+                .HasMaxLength(200)
                 .IsUnicode(false);
             entity.Property(e => e.Telefono)
                 .HasMaxLength(15)
@@ -72,7 +73,7 @@ public partial class TiendaContext : DbContext
         {
             entity.HasKey(e => new { e.Cliente, e.Articulo });
 
-            entity.Property(e => e.Total).HasColumnType("decimal(18, 0)");
+            entity.Property(e => e.Total).HasColumnType("decimal(18, 4)");
 
             entity.HasOne(d => d.ArticuloNavigation).WithMany(p => p.Compras)
                 .HasForeignKey(d => d.Articulo)

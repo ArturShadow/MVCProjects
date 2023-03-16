@@ -17,5 +17,7 @@ public partial class Articulo
 
     public int? StockExtra { get; set; }
 
+    public byte[]? Imagen { get; set; }
+
     public virtual ICollection<Compra> Compras { get; } = new List<Compra>();
 }

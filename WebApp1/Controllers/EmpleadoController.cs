@@ -14,13 +14,13 @@ namespace WebApp1.Controllers
     [Route("[controller]")]
     public class EmpleadoController : Controller
     {
+        List<EmpleadoCLS>? listEmpleado;
         List<SelectListItem>? listaTC;
         List<SelectListItem>? listaSexo;
         List<SelectListItem>? listaTU;
         [HttpGet("[action]")]
         public IActionResult Index()
         {
-            List<EmpleadoCLS>? listEmpleado = null;
 
             using (var db = new Tid81dContext())
             {
@@ -36,7 +36,6 @@ namespace WebApp1.Controllers
                                     AMaterno = empleado.AMaterno,
                                     Email = empleado.Email,
                                     Direccion = empleado.Direccion,
-                                    // Sexo = empleado.Sexo,
                                     NombreSexo = sexo.Descripcion,
                                     Telefono = empleado.Telefono,
                                     FechaContrato = empleado.FechaContrato,
@@ -71,7 +70,6 @@ namespace WebApp1.Controllers
             }
             listaSexo.Insert(0, new SelectListItem { Text = "-- Selecciona --", Value = "" });
         }
-
         private void LlenarListaTU()
         {
             using (var db = new Tid81dContext())
@@ -83,7 +81,6 @@ namespace WebApp1.Controllers
             }
             listaTU.Insert(0, new SelectListItem { Text = "-- Selecciona --", Value = "" });
         }
-
         private void LlenarCampos(){
             LlenarListaTC();
             LlenarListaSexo();
@@ -92,11 +89,10 @@ namespace WebApp1.Controllers
             ViewBag.listaSexo = listaSexo;
             ViewBag.listaTU = listaTU;
         }
-
         [HttpGet("[action]")]
         public IActionResult Agregar(){
             LlenarCampos();
-            
+        
             return View();
         }
         [HttpPost("[action]")]

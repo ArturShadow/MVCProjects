@@ -14,6 +14,7 @@
         <th>@Html.LabelFor(p => Model[0].PrecioUnitario)</th>
         <th>@Html.LabelFor(p => Model[0].Stock)</th>
         <th>@Html.LabelFor(p => Model[0].StockExtra)</th>
+        <th>@Html.LabelFor(p => Model[0].Imagen)</th>
     </thead>
 
     <tbody>
@@ -26,6 +27,7 @@
                 <td>@item.PrecioUnitario</td>
                 <td>@item.Stock</td>
                 <td>@item.StockExtra</td>
+                <img src=@item.Imagen/>
             </tr>
         }
     </tbody>

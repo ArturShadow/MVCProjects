@@ -71,12 +71,13 @@ namespace WebApp1.Controllers
             using (var db = new Tid81dContext())
             {
                 Cliente cliente = new Cliente();
-                cliente.Nombre=oCliente.Nombre;
-                cliente.APaterno=oCliente.APaterno;
-                cliente.AMaterno=oCliente.AMaterno;
-                cliente.Direccion=oCliente.Direccion;
-                cliente.Sexo=oCliente.Sexo;
-                cliente.Telefono=oCliente.Telefono;
+                cliente.Nombre = oCliente.Nombre;
+                cliente.APaterno = oCliente.APaterno;
+                cliente.AMaterno = oCliente.AMaterno;
+                cliente.Direccion = oCliente.Direccion;
+                cliente.Sexo = oCliente.Sexo;
+                cliente.Telefono = oCliente.Telefono;
+                cliente.Email = oCliente.Email;
                 db.Clientes.Add(cliente);
                 db.SaveChanges();
 

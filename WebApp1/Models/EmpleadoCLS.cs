@@ -51,7 +51,7 @@ namespace WebApp1.Models
         [Display (Name = "Sueldo")]
         [Required]
         public decimal? Sueldo { get; set; }
-
+        //  Agregasmos los atributos de  tipoCXontrato y tipoUsuario al modelo
         [Display(Name = "Tipo de contrato")]
         [Required]
         public int? TipoContrato { get; set; }
@@ -65,4 +65,4 @@ namespace WebApp1.Models
         public String? NombreTipoUsuario { get; set; }
         public String? NombreSexo { get; set; }
     }
-}
+}   
