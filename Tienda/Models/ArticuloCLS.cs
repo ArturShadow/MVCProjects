@@ -33,7 +33,7 @@ namespace Tienda.Models
         [Required]
         public int? StockExtra { get; set; }
 
-        [Display(Name = "imagen")]
+        [Display(Name = "Imagen")]
         public byte[]? Imagen { get; set; }
     }
 }

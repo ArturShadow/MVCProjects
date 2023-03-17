@@ -6,28 +6,28 @@
 
 <h1>@ViewBag.Title</h1>
 
-<table class="table">
+<table class="table table-dark">
     <thead>
-        <th>@Html.LabelFor(p => Model[0].CodArticulo)</th>
-        <th>@Html.LabelFor(p => Model[0].NombreArticulo)</th>
-        <th>@Html.LabelFor(p => Model[0].Descripcion)</th>
-        <th>@Html.LabelFor(p => Model[0].PrecioUnitario)</th>
-        <th>@Html.LabelFor(p => Model[0].Stock)</th>
-        <th>@Html.LabelFor(p => Model[0].StockExtra)</th>
-        <th>@Html.LabelFor(p => Model[0].Imagen)</th>
+        <th class="text-center">@Html.LabelFor(p => Model[0].CodArticulo)</th>
+        <th class="text-center">@Html.LabelFor(p => Model[0].NombreArticulo)</th>
+        <th class="text-center">@Html.LabelFor(p => Model[0].Descripcion)</th>
+        <th class="text-center">@Html.LabelFor(p => Model[0].PrecioUnitario)</th>
+        <th class="text-center">@Html.LabelFor(p => Model[0].Stock)</th>
+        <th class="text-center">@Html.LabelFor(p => Model[0].StockExtra)</th>
+        <th class="text-center">@Html.LabelFor(p => Model[0].Imagen)</th>
     </thead>
 
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
-                <td>@item.CodArticulo</td>
-                <td>@item.NombreArticulo</td>
-                <td>@item.Descripcion</td>
-                <td>@item.PrecioUnitario</td>
-                <td>@item.Stock</td>
-                <td>@item.StockExtra</td>
-                <img src=@item.Imagen/>
+                <td class="text-center">@item.CodArticulo</td>
+                <td class="text-center">@item.NombreArticulo</td>
+                <td class="text-center">@item.Descripcion</td>
+                <td class="text-center">@item.PrecioUnitario</td>
+                <td class="text-center">@item.Stock</td>
+                <td class="text-center">@item.StockExtra</td>
+                <img src="@item.Imagen"/>
             </tr>
         }
     </tbody>

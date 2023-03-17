@@ -62,7 +62,5 @@ namespace Tienda.Controllers
             }
             return RedirectToAction("Index");
         }
-
-
     }
 }
