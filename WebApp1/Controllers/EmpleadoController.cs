@@ -113,21 +113,20 @@ namespace WebApp1.Controllers
                 empleado.Telefono = oEmpleado.Telefono;
                 empleado.FechaContrato = oEmpleado.FechaContrato;
                 empleado.Sueldo = oEmpleado.Sueldo;
-                empleado.TipoContrato = oEmpleado.TipoContrato;
+                empleado.TipoContrato = (int?)oEmpleado.TipoContrato;
                 empleado.TipoUsuario = oEmpleado.TipoUsuario;
                 db.Empleados.Add(empleado);
                 db.SaveChanges();
             }
             return RedirectToAction("Index");
         }
-
-        [HttpPost("[action]")]
+        [HttpGet("[action]")]
         public IActionResult Editar(int id)
         {
-            LlenarCampos();
-            EmpleadoCLS oEmpleado = new EmpleadoCLS();
+            LlenarCampos(); //Llenamos los combobox
+            EmpleadoCLS oEmpleado = new EmpleadoCLS(); // Es el modelo que mostrara los datos en la vista
             using(var db = new Tid81dContext()){
-                Empleado empleado = db.Empleados.Where(p => p.IdEmpleado.Equals(id)).First();
+                Empleado empleado = db.Empleados.Where(p => p.IdEmpleado.Equals(id)).First(); // Recuperamos los datos del empleado seleccionado
                 oEmpleado.Nombre = empleado.Nombre;
                 oEmpleado.APaterno = empleado.APaterno;
                 oEmpleado.AMaterno = empleado.AMaterno;
@@ -140,7 +139,29 @@ namespace WebApp1.Controllers
                 oEmpleado.TipoContrato = empleado.TipoContrato;
                 oEmpleado.TipoUsuario = empleado.TipoUsuario;
             }
-            return View(oEmpleado);
+            return View(oEmpleado); // Mandamos los datos a la vista
+        }
+
+        [HttpPost("[action]")]
+        public IActionResult Editar(EmpleadoCLS oEmpleado){
+            using(var db = new Tid81dContext())
+            {
+                Empleado empleado = new Empleado();
+                empleado.IdEmpleado = oEmpleado.IdEmpleado;
+                empleado.Nombre = oEmpleado.Nombre;
+                empleado.APaterno = oEmpleado.APaterno;
+                empleado.AMaterno = oEmpleado.AMaterno;
+                empleado.Direccion = oEmpleado.Direccion;
+                empleado.Email = oEmpleado.Email;
+                empleado.Sexo = oEmpleado.Sexo;
+                empleado.Telefono = oEmpleado.Telefono;
+                empleado.FechaContrato = oEmpleado.FechaContrato;
+                empleado.Sueldo = oEmpleado.Sueldo;
+                empleado.TipoContrato = (int?)oEmpleado.TipoContrato;
+                empleado.TipoUsuario = oEmpleado.TipoUsuario;
+                db.Empleados.Update(empleado);
+            }
+            return RedirectToAction("Index");
         }
     }
 }

@@ -11,7 +11,7 @@ CREATE TABLE Clientes (
     Provincia VARCHAR(60),
     Telefono VARCHAR(15),
     FehaNacimiento Date,
-    CONSTRAINT  PK_Clientes PRIMARY KEY(CodCliente)
+    CONSTRAINT PK_Clientes PRIMARY KEY(CodCliente)
 );
 
 CREATE TABLE Articulos (
@@ -37,7 +37,7 @@ CREATE TABLE Compras (
 );
 
 -- Insert rows into table 'Articulos'
-INSERT INTO Articulos ("NombreArticulo", "Descripcion", "PrecioUnitario","Stock", "StockExtra") VALUES ('Tijeras','Cortan papel',2.99,30,8);
+INSERT INTO Articulos ("NombreArticulo", "Descripcion", "PrecioUnitario","Stock","StockExtra") VALUES ('Tijeras','Cortan papel',2.99,30,8);
 GO
 -- 520-614-256-286
 
