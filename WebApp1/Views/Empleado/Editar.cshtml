@@ -13,8 +13,13 @@
 @try{
 <div class="row">
     <div class="col">
-        @using (Html.BeginForm("Agregar","Empleado",FormMethod.Post))
+        @using (Html.BeginForm("Editar","Empleado",FormMethod.Post))
         {
+            <div>
+                @Html.LabelFor(p => p.IdEmpleado , new {@class="form-label"})
+                @Html.TextBoxFor(p => p.IdEmpleado, new {@class="form-control",disabled=true})
+                @Html.ValidationMessageFor(p => Model.Nombre)
+            </div>
             <div>
                 @Html.LabelFor(p => p.Nombre , new {@class="form-label"})
                 @Html.TextBoxFor(p => p.Nombre, new {@class="form-control"})

@@ -40,6 +40,12 @@
                 <td>@item.FechaContrato</td>
                 <td>@item.Sueldo</td>
                 <td>@item.NombreTipoUsuario</td>
+                <td>
+                    @Html.ActionLink("Editar","Editar","Empleado",new{id = item.IdEmpleado}, new {@class = "btn btn-outline-info"})
+                </td>
+                <td>
+                    @Html.ActionLink("Eliminar","Eliminar","Empleado",new{id = item.IdEmpleado},new {@class = "btn btn-outline-danger"})
+                </td>
             </tr>
         }
     </tbody>

@@ -5,6 +5,7 @@ namespace Tienda.Models.DB;
 
 public partial class Cliente
 {
+    
     public int CodCliente { get; set; }
 
     public string? Nombre { get; set; }

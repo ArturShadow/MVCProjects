@@ -120,5 +120,27 @@ namespace WebApp1.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        [HttpPost("[action]")]
+        public IActionResult Editar(int id)
+        {
+            LlenarCampos();
+            EmpleadoCLS oEmpleado = new EmpleadoCLS();
+            using(var db = new Tid81dContext()){
+                Empleado empleado = db.Empleados.Where(p => p.IdEmpleado.Equals(id)).First();
+                oEmpleado.Nombre = empleado.Nombre;
+                oEmpleado.APaterno = empleado.APaterno;
+                oEmpleado.AMaterno = empleado.AMaterno;
+                oEmpleado.Direccion = empleado.Direccion;
+                oEmpleado.Email = empleado.Email;
+                oEmpleado.Sexo = empleado.Sexo;
+                oEmpleado.Telefono = empleado.Telefono;
+                oEmpleado.FechaContrato = empleado.FechaContrato;
+                oEmpleado.Sueldo = empleado.Sueldo;
+                oEmpleado.TipoContrato = empleado.TipoContrato;
+                oEmpleado.TipoUsuario = empleado.TipoUsuario;
+            }
+            return View(oEmpleado);
+        }
     }
 }
