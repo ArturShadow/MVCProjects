@@ -10,12 +10,16 @@ namespace Tienda.Models
     {
         public int Cliente { get; set; }
 
-    public int Articulo { get; set; }
+        public int Articulo { get; set; }
 
-    public DateOnly? Fecha { get; set; }
+        public DateOnly? Fecha { get; set; }
 
-    public int? Unidades { get; set; }
+        public int? Unidades { get; set; }
 
-    public decimal? Total { get; set; }
+        public decimal? Total { get; set; }
+
+        public String? NombreArticulo { get; set; }
+
+        public String? NombreCliente { get; set; }
     }
 }

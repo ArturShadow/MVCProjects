@@ -52,8 +52,8 @@ namespace WebApp1.Controllers
             using (var db = new Tid81dContext())
             {
                 listaTC = (from tipoContrato in db.TipoContratos select new SelectListItem(){
-                     Text = tipoContrato.Descripcion,
-                     Value = tipoContrato.IdTipoContrato.ToString()
+                    Text = tipoContrato.Descripcion,
+                    Value = tipoContrato.IdTipoContrato.ToString()
                 }).ToList();
             }
             listaTC.Insert(0, new SelectListItem { Text = "-- Selecciona --", Value = "" });
@@ -64,8 +64,8 @@ namespace WebApp1.Controllers
             using (var db = new Tid81dContext())
             {
                 listaSexo = (from sexo in db.Sexos select new SelectListItem(){
-                     Text = sexo.Descripcion,
-                     Value = sexo.IdSexo.ToString()
+                    Text = sexo.Descripcion,
+                    Value = sexo.IdSexo.ToString()
                 }).ToList();
             }
             listaSexo.Insert(0, new SelectListItem { Text = "-- Selecciona --", Value = "" });
@@ -75,8 +75,8 @@ namespace WebApp1.Controllers
             using (var db = new Tid81dContext())
             {
                 listaTU = (from tipoUsuario in db.TipoUsuarios select new SelectListItem(){
-                     Text = tipoUsuario.Descripcion,
-                     Value = tipoUsuario.IdTipoUsuario.ToString()
+                    Text = tipoUsuario.Descripcion,
+                    Value = tipoUsuario.IdTipoUsuario.ToString()
                 }).ToList();
             }
             listaTU.Insert(0, new SelectListItem { Text = "-- Selecciona --", Value = "" });
@@ -123,10 +123,14 @@ namespace WebApp1.Controllers
         [HttpGet("[action]")]
         public IActionResult Editar(int id)
         {
-            LlenarCampos(); //Llenamos los combobox
-            EmpleadoCLS oEmpleado = new EmpleadoCLS(); // Es el modelo que mostrara los datos en la vista
+            // Llenamos los combobox
+            LlenarCampos();
+            // Es el modelo que mostrara los datos en la vista
+            EmpleadoCLS oEmpleado = new EmpleadoCLS(); 
             using(var db = new Tid81dContext()){
-                Empleado empleado = db.Empleados.Where(p => p.IdEmpleado.Equals(id)).First(); // Recuperamos los datos del empleado seleccionado
+                 // Recuperamos los datos del empleado seleccionado
+                Empleado empleado = db.Empleados.Where(p => p.IdEmpleado.Equals(id)).First();
+                oEmpleado.IdEmpleado = empleado.IdEmpleado;
                 oEmpleado.Nombre = empleado.Nombre;
                 oEmpleado.APaterno = empleado.APaterno;
                 oEmpleado.AMaterno = empleado.AMaterno;
@@ -143,23 +147,28 @@ namespace WebApp1.Controllers
         }
 
         [HttpPost("[action]")]
-        public IActionResult Editar(EmpleadoCLS oEmpleado){
+        public IActionResult Editar(EmpleadoCLS oEmpleadoCLS){
+            if(!ModelState.IsValid){
+                LlenarCampos();
+                return View(oEmpleadoCLS);
+            }
             using(var db = new Tid81dContext())
             {
                 Empleado empleado = new Empleado();
-                empleado.IdEmpleado = oEmpleado.IdEmpleado;
-                empleado.Nombre = oEmpleado.Nombre;
-                empleado.APaterno = oEmpleado.APaterno;
-                empleado.AMaterno = oEmpleado.AMaterno;
-                empleado.Direccion = oEmpleado.Direccion;
-                empleado.Email = oEmpleado.Email;
-                empleado.Sexo = oEmpleado.Sexo;
-                empleado.Telefono = oEmpleado.Telefono;
-                empleado.FechaContrato = oEmpleado.FechaContrato;
-                empleado.Sueldo = oEmpleado.Sueldo;
-                empleado.TipoContrato = (int?)oEmpleado.TipoContrato;
-                empleado.TipoUsuario = oEmpleado.TipoUsuario;
+                empleado.IdEmpleado = oEmpleadoCLS.IdEmpleado;
+                empleado.Nombre = oEmpleadoCLS.Nombre;
+                empleado.APaterno = oEmpleadoCLS.APaterno;
+                empleado.AMaterno = oEmpleadoCLS.AMaterno;
+                empleado.Direccion = oEmpleadoCLS.Direccion;
+                empleado.Email = oEmpleadoCLS.Email;
+                empleado.Sexo = oEmpleadoCLS.Sexo;
+                empleado.Telefono = oEmpleadoCLS.Telefono;
+                empleado.FechaContrato = oEmpleadoCLS.FechaContrato;
+                empleado.Sueldo = oEmpleadoCLS.Sueldo;
+                empleado.TipoContrato = oEmpleadoCLS.TipoContrato;
+                empleado.TipoUsuario = oEmpleadoCLS.TipoUsuario;
                 db.Empleados.Update(empleado);
+                db.SaveChanges();
             }
             return RedirectToAction("Index");
         }

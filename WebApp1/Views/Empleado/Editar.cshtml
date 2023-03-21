@@ -10,7 +10,6 @@
 }
 
 <h1>@ViewBag.Title</h1>
-@try{
 <div class="row">
     <div class="col">
         @using (Html.BeginForm("Editar","Empleado",FormMethod.Post))
@@ -82,9 +81,3 @@
         }
     </div>
 </div>
-}
-catch (Exception e)
-{
-    
-    <p>@e.Message</p>
-}

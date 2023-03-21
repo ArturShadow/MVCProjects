@@ -1,0 +1,48 @@
+@page
+@model Tienda.Models.CompraCLS
+@{
+    ViewBag.Title = "Agregar";
+    List<SelectListItem> listaArticulo = (List<SelectListItem>) ViewBag.listaArticulo;
+    List<SelectListItem> listaCliente = (List<SelectListItem>) ViewBag.listaCliente;
+
+}
+
+<h1>@ViewBag.Title</h1>
+
+<div>
+    
+        @using (Html.BeginForm("Agregar", "Compra", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="row">
+                <div class="col-md-6">
+                    @Html.LabelFor(p => p.Cliente,new {@class="form-label"})*
+                    @Html.DropDownListFor(p=> p.Cliente, listaCliente, new {@class="form-control"})
+                    @Html.ValidationMessageFor(p=> p.Cliente,null,new{@class="text-danger"})
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(p => p.Articulo,new {@class="form-label"})*
+                    @Html.DropDownListFor(p=> p.Articulo, listaArticulo, new {@class="form-control"})
+                    @Html.ValidationMessageFor(p=> p.Articulo,null,new{@class="text-danger"})
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(p => p.Fecha,new {@class="form-label"})*
+                    @Html.TextBoxFor(p=> p.Fecha, new {@class="form-control", type="date"})
+                    @Html.ValidationMessageFor(p=> p.Fecha,null,new{@class="text-danger"})
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(p => p.Unidades,new {@class="form-label"})*
+                    @Html.TextBoxFor(p=> p.Unidades,new {@class="form-control", type = "number", min=0})
+                    @Html.ValidationMessageFor(p=> p.Unidades,null,new{@class="text-danger"})
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(p => p.Total,new {@class="form-label"})*
+                    @Html.TextBoxFor(p=> p.Total,new {@class="form-control",type = "number", min=0, disabled=true})
+                    @Html.ValidationMessageFor(p=> p.Total,null,new{@class="text-danger"})
+                </div>
+
+                <dir>
+                    <button type="submit" class="btn btn-dark">Enviar</button>
+                </dir>
+            </div>
+        }
+</div>
