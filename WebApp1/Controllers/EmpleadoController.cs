@@ -130,7 +130,7 @@ namespace WebApp1.Controllers
             using(var db = new Tid81dContext()){
                  // Recuperamos los datos del empleado seleccionado
                 Empleado empleado = db.Empleados.Where(p => p.IdEmpleado.Equals(id)).First();
-                oEmpleado.IdEmpleado = empleado.IdEmpleado;
+                oEmpleado.IdEmpleado = id;
                 oEmpleado.Nombre = empleado.Nombre;
                 oEmpleado.APaterno = empleado.APaterno;
                 oEmpleado.AMaterno = empleado.AMaterno;
@@ -152,9 +152,10 @@ namespace WebApp1.Controllers
                 LlenarCampos();
                 return View(oEmpleadoCLS);
             }
+            int idEmpleado = oEmpleadoCLS.IdEmpleado;
             using(var db = new Tid81dContext())
             {
-                Empleado empleado = new Empleado();
+                Empleado empleado = db.Empleados.Where(p => p.IdEmpleado.Equals(idEmpleado)).First();
                 empleado.IdEmpleado = oEmpleadoCLS.IdEmpleado;
                 empleado.Nombre = oEmpleadoCLS.Nombre;
                 empleado.APaterno = oEmpleadoCLS.APaterno;
@@ -167,7 +168,6 @@ namespace WebApp1.Controllers
                 empleado.Sueldo = oEmpleadoCLS.Sueldo;
                 empleado.TipoContrato = oEmpleadoCLS.TipoContrato;
                 empleado.TipoUsuario = oEmpleadoCLS.TipoUsuario;
-                db.Empleados.Update(empleado);
                 db.SaveChanges();
             }
             return RedirectToAction("Index");

@@ -16,23 +16,23 @@
         {
             <div>
                 @Html.LabelFor(p => p.IdEmpleado , new {@class="form-label"})
-                @Html.TextBoxFor(p => p.IdEmpleado, new {@class="form-control",disabled=true})
-                @Html.ValidationMessageFor(p => Model.Nombre)
+                @Html.TextBoxFor(p => p.IdEmpleado, new {@class="form-control",@ReadOnly=true})
+                @Html.ValidationMessageFor(p => Model.Nombre,null,new {@class="text-danger"})
             </div>
             <div>
                 @Html.LabelFor(p => p.Nombre , new {@class="form-label"})
                 @Html.TextBoxFor(p => p.Nombre, new {@class="form-control"})
-                @Html.ValidationMessageFor(p => Model.Nombre)
+                @Html.ValidationMessageFor(p => Model.Nombre,null,new {@class="text-danger"})
             </div>
             <div>
                 @Html.LabelFor(p => p.APaterno , new {@class="form-label"})
                 @Html.TextBoxFor(p => p.APaterno, new {@class="form-control"})
-                @Html.ValidationMessageFor(p => Model.APaterno)
+                @Html.ValidationMessageFor(p => Model.APaterno,null,new {@class="text-danger"})
             </div>
             <div>
                 @Html.LabelFor(p => p.AMaterno , new {@class="form-label"})
                 @Html.TextBoxFor(p => p.AMaterno, new {@class="form-control"})
-                @Html.ValidationMessageFor(p => Model.AMaterno)
+                @Html.ValidationMessageFor(p => Model.AMaterno,null,new {@class="text-danger"})
             </div>
             <div>
                 @Html.LabelFor(p => p.Email , new {@class="form-label"})
@@ -42,38 +42,38 @@
             <div>
                 @Html.LabelFor(p => p.Direccion , new {@class="form-label"})
                 @Html.TextBoxFor(p => p.Direccion, new {@class="form-control"})
-                @Html.ValidationMessageFor(p => Model.Direccion)
+                @Html.ValidationMessageFor(p => Model.Direccion,null,new {@class="text-danger"})
             </div>
 
             <div>
                 @Html.LabelFor(p => p.Sexo , new {@class="form-label"})
-                @Html.DropDownListFor(p => p.Sexo, listaSexo, new {@class="form-control"})
-                @Html.ValidationMessageFor(p => Model.Sexo)
+                @Html.DropDownListFor(p=>p.Sexo,listaSexo,null,new {@class="form-control"})
+                @Html.ValidationMessageFor(p => Model.Sexo,null,new {@class="text-danger"})
             </div>
             <div>
                 @Html.LabelFor(p => p.Telefono , new {@class="form-label"})
                 @Html.TextBoxFor(p => p.Telefono, new {@class="form-control"})
-                @Html.ValidationMessageFor(p => Model.Telefono)
+                @Html.ValidationMessageFor(p => Model.Telefono,null,new {@class="text-danger"})
             </div>
             <div>
                 @Html.LabelFor(p => p.Sueldo , new {@class="form-label"})
                 @Html.TextBoxFor(p => p.Sueldo, new {@class="form-control"})
-                @Html.ValidationMessageFor(p => Model.Sueldo)
+                @Html.ValidationMessageFor(p => Model.Sueldo,null,new {@class="text-danger"})
             </div>
             <div>
                 @Html.LabelFor(p => p.FechaContrato , new {@class="form-label"})
-                @Html.TextBoxFor(p => p.FechaContrato, new {@class="form-control",type="date"})
-                @Html.ValidationMessageFor(p => Model.FechaContrato)
+                @Html.TextBoxFor(p => p.FechaContrato, new {@class="form-control"})
+                @Html.ValidationMessageFor(p => Model.FechaContrato,null,new {@class="text-danger"})
             </div>
             <div>
                 @Html.LabelFor(p => p.TipoContrato , new {@class="form-label"})
                 @Html.DropDownListFor(p => p.TipoContrato,listaTC, new {@class="form-control"})
-                @Html.ValidationMessageFor(p => Model.TipoContrato)
+                @Html.ValidationMessageFor(p => Model.TipoContrato,null,new {@class="text-danger"})
             </div>
             <div>
                 @Html.LabelFor(p => p.TipoUsuario , new {@class="form-label"})
                 @Html.DropDownListFor(p => p.TipoUsuario,listaTU, new {@class="form-control"})
-                @Html.ValidationMessageFor(p => Model.TipoUsuario)
+                @Html.ValidationMessageFor(p => Model.TipoUsuario,null,new {@class="text-danger"})
             </div>
             <div>
                 <button type="submit" class="btn btn-dark">Guardar</button>

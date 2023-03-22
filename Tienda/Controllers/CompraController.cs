@@ -74,6 +74,8 @@ namespace Tienda.Controllers
             return View();
         }
 
+        
+
         [HttpPost("[action]")]
         public IActionResult Agregar(CompraCLS oCompra)
         {
@@ -85,12 +87,12 @@ namespace Tienda.Controllers
             using (var db = new TiendaContext())
             {
                 var compra = new Compra();
-                Articulo precioArticulo = (Articulo)db.Articulos.Where(p=>p.CodArticulo.Equals(oCompra.Articulo));
+                
                 compra.Cliente = oCompra.Cliente;
                 compra.Articulo = oCompra.Articulo;
                 compra.Fecha = oCompra.Fecha;
                 compra.Unidades = oCompra.Unidades;
-                compra.Total = (precioArticulo.PrecioUnitario * oCompra.Unidades);
+                compra.Total = oCompra.Total;
                 db.Compras.Add(compra);
                 db.SaveChanges();
             }

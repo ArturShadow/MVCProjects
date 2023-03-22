@@ -101,3 +101,4 @@ UPDATE Empleados SET TipoContrato = 3, TipoUsuario = 2 WHERE idEmpleado = 2;
 
 
 
+UPDATE Empleados SET sexo=1 WHERE idEmpleado=3;
