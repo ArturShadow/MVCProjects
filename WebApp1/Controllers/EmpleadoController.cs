@@ -28,6 +28,7 @@ namespace WebApp1.Controllers
                                 join sexo in db.Sexos on empleado.Sexo equals sexo.IdSexo
                                 join tipoUsuario in db.TipoUsuarios on empleado.TipoUsuario equals tipoUsuario.IdTipoUsuario
                                 join tipoContrato in db.TipoContratos on empleado.TipoContrato equals tipoContrato.IdTipoContrato
+                                where empleado.Activo.Equals(1)
                                 select new EmpleadoCLS
                                 {
                                     IdEmpleado = empleado.IdEmpleado,
@@ -168,6 +169,15 @@ namespace WebApp1.Controllers
                 empleado.Sueldo = oEmpleadoCLS.Sueldo;
                 empleado.TipoContrato = oEmpleadoCLS.TipoContrato;
                 empleado.TipoUsuario = oEmpleadoCLS.TipoUsuario;
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Eliminar(int id){
+            using (var db = new Tid81dContext()){
+                var empleado = db.Empleados.Where(e=>e.IdEmpleado.Equals(id)).First();
+                empleado.Activo = 0;
                 db.SaveChanges();
             }
             return RedirectToAction("Index");
