@@ -102,3 +102,10 @@ UPDATE Empleados SET TipoContrato = 3, TipoUsuario = 2 WHERE idEmpleado = 2;
 
 
 UPDATE Empleados SET sexo=1 WHERE idEmpleado=3;
+
+ALTER Table Empleados
+ADD Activo INT DEFAULT 1;
+
+UPDATE Empleados SET Activo=1;
+
+SELECT * FROM Empleados;
