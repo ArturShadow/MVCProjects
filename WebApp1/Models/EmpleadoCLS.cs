@@ -59,6 +59,9 @@ namespace WebApp1.Models
         [Required]
         public int? TipoUsuario { get; set; }
 
+        [Display(Name = "Estado")]
+        public int Activo { get; set; }
+
         //Campos para las descripciones
         
         public String? NombreTipoContrato { get; set; }
