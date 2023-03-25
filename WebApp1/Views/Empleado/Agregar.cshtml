@@ -10,7 +10,6 @@
 }
 
 <h1>@ViewBag.Title</h1>
-@try{
 <div class="row">
     <div class="col">
         @using (Html.BeginForm("Agregar","Empleado",FormMethod.Post))
@@ -72,14 +71,9 @@
                 @Html.ValidationMessageFor(p => Model.TipoUsuario)
             </div>
             <div>
-                <button type="submit" class="btn btn-dark">Guardar</button>
+                <button type="submit" class="btn btn-dark" >Guardar</button>
             </div>
         }
     </div>
 </div>
-}
-catch (Exception e)
-{
-    
-    <p>@e.Message</p>
-}
+

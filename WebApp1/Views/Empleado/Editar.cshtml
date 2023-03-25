@@ -3,7 +3,7 @@
 
 
 @{
-    ViewBag.Title = "Agregar empleado";
+    ViewBag.Title = "Editar empleado";
     List<SelectListItem> listaTC = (List<SelectListItem>) ViewBag.listaTC;
     List<SelectListItem> listaSexo = (List<SelectListItem>) ViewBag.listaSexo;
     List<SelectListItem> listaTU = (List<SelectListItem>) ViewBag.listaTU;
@@ -76,8 +76,17 @@
                 @Html.ValidationMessageFor(p => Model.TipoUsuario,null,new {@class="text-danger"})
             </div>
             <div>
-                <button type="submit" class="btn btn-dark">Guardar</button>
+                <button type="submit" class="btn btn-dark" onclick="Editar()">Guardar</button>
             </div>
         }
     </div>
 </div>
+<script>
+    function Editar() {
+        let text = "Esta seguro de modificar el registro?"
+        if (confirm(text) == true) {
+        } else {
+            event.preventDefault();
+        }
+    }
+</script>

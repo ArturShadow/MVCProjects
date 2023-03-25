@@ -45,9 +45,20 @@
                     @Html.ActionLink("Editar","Editar","Empleado",new{id = item.IdEmpleado}, new {@class = "btn btn-outline-info"})
                 </td>
                 <td>
-                    @Html.ActionLink("Eliminar","Eliminar","Empleado",new{id = item.IdEmpleado},new {@class = "btn btn-outline-danger"})
+                    @Html.ActionLink("Eliminar","Eliminar","Empleado",new{id = item.IdEmpleado},new {@class = "btn btn-outline-danger", onclick="Eliminar"})
                 </td>
             </tr>
         }
     </tbody>
 </table>
+
+<script>
+    function Eliminar(){
+        let text = "Esta seguro de eliminar el registr?"
+        if (confirm(text) == true) {
+        } else {
+            event.preventDefault();
+        }
+    }
+</script>
+
