@@ -1,11 +1,10 @@
 @page
-@using Tienda.Models
-@model ArticuloCLS
+@model Tienda.Models.ArticuloCLS
 @{
-    ViewBag.Title = "Agregar articulos";
+    ViewBag.TitleTitle = "Editar";
 }
 
-<h1>@ViewBag.Title</h1>
+<h1>@ViewBag.TitleTitle</h1>
 
 <div class="container container-fluid">
     @try
@@ -13,6 +12,7 @@
         @using (Html.BeginForm("Agregar", "Articulo", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             <div class="row">
+                    @Html.TextBoxFor(p=> p.CodArticulo, new {@type="hidden"})
                 <div class="col-md-6">
                     @Html.LabelFor(p => p.NombreArticulo,new {@class="form-label"})*
                     @Html.TextBoxFor(p=> p.NombreArticulo, new {@class="form-control"})
@@ -43,9 +43,9 @@
         @Html.TextBoxFor(p => p.Imagen, new {type = "file",accept=".jpg"})
         @Html.ValidationMessageFor(p=> p.Imagen,null,new{@class="text-danger"})
         </div> *@
-                <dir class="text-center mt-2">
-                    <button type="submit" class="btn btn-dark">Enviar</button>
-                </dir>
+                <div class="text-center mt-2">
+                    <button type="submit" class="btn btn-outline-dark">Enviar</button>
+                </div>
             </div>
         }
     }

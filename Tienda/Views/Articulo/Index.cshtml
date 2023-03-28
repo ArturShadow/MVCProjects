@@ -1,33 +1,31 @@
 @using Tienda.Models
 @model List<ArticuloCLS>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Lista de articulos";
 }
 
 <h1>@ViewBag.Title</h1>
-<table class="table">
-    <thead>
-        <th class="text-center">@Html.LabelFor(p => Model[0].CodArticulo)</th>
-        <th class="text-center">@Html.LabelFor(p => Model[0].NombreArticulo)</th>
-        <th class="text-center">@Html.LabelFor(p => Model[0].Descripcion)</th>
-        <th class="text-center">@Html.LabelFor(p => Model[0].PrecioUnitario)</th>
-        <th class="text-center">@Html.LabelFor(p => Model[0].Stock)</th>
-        <th class="text-center">@Html.LabelFor(p => Model[0].StockExtra)</th>
-        <th class="text-center">@Html.LabelFor(p => Model[0].Imagen)</th>
-    </thead>
-
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td class="text-center">@item.CodArticulo</td>
-                <td class="text-center">@item.NombreArticulo</td>
-                <td class="text-center">@item.Descripcion</td>
-                <td class="text-center">@item.PrecioUnitario</td>
-                <td class="text-center">@item.Stock</td>
-                <td class="text-center">@item.StockExtra</td>
-                <img src="@item.Imagen"/>
-            </tr>
-        }
-    </tbody>
-</table>
+<div class="text-center mb-2">
+  @Html.ActionLink("Agregar Articulo","Agregar","Articulo",null, new {@class="btn btn-primary"})
+</div>
+<div class="row">
+@foreach (var articulo in Model)
+{
+<div class="card col" style="width: 18rem;">
+  <img src="/images/no-image-found.png" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">@articulo.NombreArticulo</h5>
+    <p class="card-text">@articulo.Descripcion</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">@Html.LabelFor(p=> Model[0].PrecioUnitario): @articulo.PrecioUnitario</li>
+    <li class="list-group-item">@Html.LabelFor(p=> Model[0].Stock): @articulo.Stock</li>
+    <li class="list-group-item">@Html.LabelFor(p=> Model[0].StockExtra): @articulo.StockExtra</li>
+  </ul>
+  <div class="card-body">
+    @Html.ActionLink("Editar","Editar","Articulo", new { id = articulo.CodArticulo}, new {@class = "card-link"})
+    @Html.ActionLink("Eliminar","Eliminar","Articulo", new { id = articulo.CodArticulo}, new {@class = "card-link"})
+  </div>
+</div>
+}
+</div>

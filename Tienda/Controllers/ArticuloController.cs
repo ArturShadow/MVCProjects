@@ -62,5 +62,22 @@ namespace Tienda.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        [HttpGet("[action]")]
+        public IActionResult Editar(int id)
+        {
+            ArticuloCLS oArticulo = new ArticuloCLS();
+            using(var db = new TiendaContext())
+            {
+                Articulo articulo = db.Articulos.Where(p=>p.CodArticulo.Equals(id)).First();
+                oArticulo.CodArticulo = articulo.CodArticulo;
+                oArticulo.NombreArticulo = articulo.NombreArticulo;
+                oArticulo.Descripcion = articulo.Descripcion;
+                oArticulo.PrecioUnitario = articulo.PrecioUnitario;
+                oArticulo.Stock = articulo.Stock;
+                oArticulo.StockExtra = articulo.StockExtra;
+            }
+            return View(oArticulo);
+        }
     }
 }

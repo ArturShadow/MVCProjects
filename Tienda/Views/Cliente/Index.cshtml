@@ -5,6 +5,9 @@
 }
 
 <h1>@ViewBag.Title</h1>
+<div class="text-center mb-2">
+  @Html.ActionLink("Agregar cliente","Agregar","Cliente",null, new {@class="btn btn-primary"})
+</div>
 
 <table class="table table-dark">
     <thead>
@@ -17,6 +20,8 @@
         <th class="text-center">@Html.LabelFor(p => Model[0].Provincia)</th>
         <th class="text-center">@Html.LabelFor(p => Model[0].Telefono)</th>
         <th class="text-center">@Html.LabelFor(p => Model[0].FehaNacimiento)</th>
+        <th class="text-center"></th>
+        <th class="text-center"></th>
         
     </thead>
 
@@ -33,6 +38,8 @@
                 <td class="text-center">@item.Provincia</td>
                 <td class="text-center">@item.Telefono</td>
                 <td class="text-center">@item.FehaNacimiento</td>
+                <td class="text-center">@Html.ActionLink("Editar","Editar","Cliente",new {id = item.CodCliente},new {@class ="btn btn-outline-info"})</td>
+                <td class="text-center">@Html.ActionLink("Eliminar","Eliminar","Cliente",new {id = item.CodCliente},new {@class ="btn btn-outline-danger"})</td>
             </tr>
         }
     </tbody>

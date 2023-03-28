@@ -1,4 +1,3 @@
-@page
 @using Tienda.Models
 @model List<CompraCLS>
 @{
@@ -14,14 +13,16 @@
         <th class="text-center">@Html.LabelFor(p => Model[0].Fecha)</th>
         <th class="text-center">@Html.LabelFor(p => Model[0].Unidades)</th>
         <th class="text-center">@Html.LabelFor(p => Model[0].Total)</th>
+        <th></th>
+        <th></th>
     </thead>
 
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
-                <td class="text-center">@item.Cliente</td>
-                <td class="text-center">@item.Articulo</td>
+                <td class="text-center">@item.NombreCliente</td>
+                <td class="text-center">@item.NombreArticulo</td>
                 <td class="text-center">@item.Fecha</td>
                 <td class="text-center">@item.Unidades</td>
                 <td class="text-center">@item.Total</td>
