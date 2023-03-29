@@ -1,0 +1,27 @@
+@page
+@model SubirImagenes.Models.ArchivoModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1>@ViewBag.Title</h1>
+
+<div>
+    @using (Html.BeginForm("Save","Archivo",null,FormMethod.Post,true, new {enctype="multipart/form-data"}))
+    {
+        @Html.AntiForgeryToken();
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-6 col-lg-offset-3">
+                    @Html.LabelFor(p=> Model.Archivo)
+                    <p>
+                        <input type="file" name="Archivo" id="Archivo">
+                    </p>
+                </div>
+                <div class=""></div>
+                <div class=""></div>
+            </div>
+        </div>
+    }
+</div>
