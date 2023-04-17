@@ -3,4 +3,8 @@
 
 // Write your JavaScript code.
 
-let boxTotal = document.getElementById("Total");
+
+function ConfirmarEliminacion(){
+    let text = "Esta seguro de eliminarlo?"
+        if (!confirm(text)) event.preventDefault()
+}
