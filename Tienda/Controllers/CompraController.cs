@@ -27,9 +27,10 @@ namespace Tienda.Controllers
                 join articulo in db.Articulos on compra.Articulo equals articulo.CodArticulo
                 join cliente in db.Clientes on compra.Cliente equals cliente.CodCliente
                 select new CompraCLS{
+                    NoCompra = compra.NoCompra,
                     NombreArticulo = articulo.NombreArticulo,
                     NombreCliente = cliente.Nombre,
-                    Fecha = compra.Fecha,
+                    Fecha = (DateOnly?)compra.Fecha,
                     Unidades = compra.Unidades,
                     Total = compra.Total
                 }).ToList();
@@ -40,7 +41,7 @@ namespace Tienda.Controllers
         private void Articulo(){
             using (var db = new TiendaContext())
             {
-                listaArticulo = (from articulo in db.Articulos select new SelectListItem(){
+                listaArticulo = (from articulo in db.Articulos where articulo.Estado.Equals(1) select new SelectListItem(){
                     Value = articulo.CodArticulo.ToString(),
                     Text = articulo.NombreArticulo
                 }).ToList<SelectListItem>();
@@ -74,8 +75,6 @@ namespace Tienda.Controllers
             return View();
         }
 
-        
-
         [HttpPost("[action]")]
         public IActionResult Agregar(CompraCLS oCompra)
         {
@@ -85,15 +84,17 @@ namespace Tienda.Controllers
             }
 
             using (var db = new TiendaContext())
-            {
+            {   
+                var articulo = db.Articulos.Where(a => a.CodArticulo.Equals(oCompra.Articulo)).First();
                 var compra = new Compra();
                 
                 compra.Cliente = oCompra.Cliente;
                 compra.Articulo = oCompra.Articulo;
-                compra.Fecha = oCompra.Fecha;
                 compra.Unidades = oCompra.Unidades;
-                compra.Total = oCompra.Total;
+                compra.Fecha = DateOnly.FromDateTime(DateTime.Now);
+                compra.Total = oCompra.Unidades * articulo.PrecioUnitario;
                 db.Compras.Add(compra);
+                articulo.Stock -= oCompra.Unidades;
                 db.SaveChanges();
             }
             return RedirectToAction("Index");

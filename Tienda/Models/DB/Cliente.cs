@@ -23,5 +23,7 @@ public partial class Cliente
 
     public DateOnly? FehaNacimiento { get; set; }
 
+    public int? Estado { get; set; }
+
     public virtual ICollection<Compra> Compras { get; } = new List<Compra>();
 }

@@ -5,9 +5,11 @@ namespace Tienda.Models.DB;
 
 public partial class Compra
 {
-    public int Cliente { get; set; }
+    public int NoCompra { get; set; }
 
-    public int Articulo { get; set; }
+    public int? Cliente { get; set; }
+
+    public int? Articulo { get; set; }
 
     public DateOnly? Fecha { get; set; }
 
@@ -15,7 +17,7 @@ public partial class Compra
 
     public decimal? Total { get; set; }
 
-    public virtual Articulo ArticuloNavigation { get; set; } = null!;
+    public virtual Articulo? ArticuloNavigation { get; set; }
 
-    public virtual Cliente ClienteNavigation { get; set; } = null!;
+    public virtual Cliente? ClienteNavigation { get; set; }
 }

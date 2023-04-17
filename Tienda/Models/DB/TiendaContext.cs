@@ -23,7 +23,7 @@ public partial class TiendaContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=localhost,1433;Database=Tienda;uid=sa;Password=Sh1roubon#;TrustServerCertificate=true;");
+        => optionsBuilder.UseSqlServer("Server=DESKTOP-R5M3G5U\\SQLEXPRESS; Database=Tienda; TrustServerCertificate=True; Integrated Security=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -32,12 +32,17 @@ public partial class TiendaContext : DbContext
             entity.HasKey(e => e.CodArticulo);
 
             entity.Property(e => e.Descripcion)
-                .HasMaxLength(250)
+                .HasMaxLength(1024)
                 .IsUnicode(false);
+            entity.Property(e => e.Estado).HasDefaultValueSql("((1))");
+            entity.Property(e => e.Imagen)
+                .HasMaxLength(1024)
+                .IsUnicode(false)
+                .HasDefaultValueSql("('no-image-found.png')");
             entity.Property(e => e.NombreArticulo)
                 .HasMaxLength(100)
                 .IsUnicode(false);
-            entity.Property(e => e.PrecioUnitario).HasColumnType("decimal(18, 0)");
+            entity.Property(e => e.PrecioUnitario).HasColumnType("decimal(8, 2)");
         });
 
         modelBuilder.Entity<Cliente>(entity =>
@@ -54,6 +59,7 @@ public partial class TiendaContext : DbContext
             entity.Property(e => e.Empresa)
                 .HasMaxLength(100)
                 .IsUnicode(false);
+            entity.Property(e => e.Estado).HasDefaultValueSql("((1))");
             entity.Property(e => e.Nombre)
                 .HasMaxLength(50)
                 .IsUnicode(false);
@@ -70,18 +76,17 @@ public partial class TiendaContext : DbContext
 
         modelBuilder.Entity<Compra>(entity =>
         {
-            entity.HasKey(e => new { e.Cliente, e.Articulo });
+            entity.HasKey(e => e.NoCompra);
 
-            entity.Property(e => e.Total).HasColumnType("decimal(18, 0)");
+            entity.Property(e => e.NoCompra).HasColumnName("noCompra");
+            entity.Property(e => e.Total).HasColumnType("decimal(8, 2)");
 
             entity.HasOne(d => d.ArticuloNavigation).WithMany(p => p.Compras)
                 .HasForeignKey(d => d.Articulo)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Articulo");
 
             entity.HasOne(d => d.ClienteNavigation).WithMany(p => p.Compras)
                 .HasForeignKey(d => d.Cliente)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Cliente");
         });
 

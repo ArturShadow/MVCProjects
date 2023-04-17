@@ -1,17 +1,11 @@
-@using Tienda.Models
-@model List<ClienteCLS>
-@{
-    ViewBag.Title = "Lista clientes";
-}
-
+@model List<Tienda.Models.ClienteCLS>
+@{ViewBag.Title = "Lista clientes";}
 <h1>@ViewBag.Title</h1>
 <div class="text-center mb-2">
-  @Html.ActionLink("Agregar cliente","Agregar","Cliente",null, new {@class="btn btn-primary"})
+    @Html.ActionLink("Agregar cliente","Agregar","Cliente",null, new {@class="btn btn-primary"})
 </div>
-
 <table class="table table-dark">
     <thead>
-        <th class="text-center">@Html.LabelFor(p => Model[0].CodCliente)</th>
         <th class="text-center">@Html.LabelFor(p => Model[0].Nombre)</th>
         <th class="text-center">@Html.LabelFor(p => Model[0].Apellidos)</th>
         <th class="text-center">@Html.LabelFor(p => Model[0].Empresa)</th>
@@ -19,27 +13,22 @@
         <th class="text-center">@Html.LabelFor(p => Model[0].Cp)</th>
         <th class="text-center">@Html.LabelFor(p => Model[0].Provincia)</th>
         <th class="text-center">@Html.LabelFor(p => Model[0].Telefono)</th>
-        <th class="text-center">@Html.LabelFor(p => Model[0].FehaNacimiento)</th>
         <th class="text-center"></th>
         <th class="text-center"></th>
-        
     </thead>
-
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var cliente in Model)
         {
             <tr>
-                <td class="text-center">@item.CodCliente</td>
-                <td class="text-center">@item.Nombre</td>
-                <td class="text-center">@item.Apellidos</td>
-                <td class="text-center">@item.Empresa</td>
-                <td class="text-center">@item.Puesto</td>
-                <td class="text-center">@item.Cp</td>
-                <td class="text-center">@item.Provincia</td>
-                <td class="text-center">@item.Telefono</td>
-                <td class="text-center">@item.FehaNacimiento</td>
-                <td class="text-center">@Html.ActionLink("Editar","Editar","Cliente",new {id = item.CodCliente},new {@class ="btn btn-outline-info"})</td>
-                <td class="text-center">@Html.ActionLink("Eliminar","Eliminar","Cliente",new {id = item.CodCliente},new {@class ="btn btn-outline-danger"})</td>
+                <td class="text-center">@cliente.Nombre</td>
+                <td class="text-center">@cliente.Apellidos</td>
+                <td class="text-center">@cliente.Empresa</td>
+                <td class="text-center">@cliente.Puesto</td>
+                <td class="text-center">@cliente.Cp</td>
+                <td class="text-center">@cliente.Provincia</td>
+                <td class="text-center">@cliente.Telefono</td>
+                <td class="text-center">@Html.ActionLink("Editar","Editar","Cliente",new {id = cliente.CodCliente},new {@class ="btn btn-outline-info"})</td>
+                <td class="text-center">@Html.ActionLink("Eliminar","Eliminar","Cliente",new {id = cliente.CodCliente},new {@class ="btn btn-outline-danger",@onClick="ConfirmarEliminacion()"})</td>
             </tr>
         }
     </tbody>

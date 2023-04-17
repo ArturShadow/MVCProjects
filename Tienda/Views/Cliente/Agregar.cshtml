@@ -1,12 +1,6 @@
-@page
-@using Tienda.Models
-@model ClienteCLS
-@{
-    ViewBag.Title = "Agregar clientes";
-}
-
+@model Tienda.Models.ClienteCLS
+@{ViewBag.Title = "Agregar clientes";}
 <h1>@ViewBag.Title</h1>
-
 <div class="container container-fluid">
         @using (Html.BeginForm("Agregar", "Cliente", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
@@ -36,29 +30,19 @@
                     @Html.TextBoxFor(p=> p.Cp,new {@class="form-control"})
                     @Html.ValidationMessageFor(p=> p.Cp,null,new{@class="text-danger"})
                 </div>
-
                 <div class="col-md-6">
                     @Html.LabelFor(p => p.Provincia,new {@class="form-label"})*
                     @Html.TextBoxFor(p=> p.Provincia,new {@class="form-control"})
                     @Html.ValidationMessageFor(p=> p.Provincia,null,new{@class="text-danger"})
                 </div>
-
                 <div class="col-md-6">
                     @Html.LabelFor(p => p.Telefono,new {@class="form-label"})*
                     @Html.TextBoxFor(p=> p.Telefono,new {@class="form-control"})
                     @Html.ValidationMessageFor(p=> p.Telefono,null,new{@class="text-danger"})
                 </div>
-
-                <div class="col-md-6">
-                    @Html.LabelFor(p => p.FehaNacimiento,new {@class="form-label"})*
-                    @Html.TextBoxFor(p=> p.FehaNacimiento,new {@class="form-control",type = "date"})
-                    @Html.ValidationMessageFor(p=> p.FehaNacimiento,null,new{@class="text-danger"})
-                </div>
-                
                 <div class="text-center mt-2">
                     <button type="submit" class="btn btn-dark">Enviar</button>
                 </div>
             </div>
         }
-    
 </div>

@@ -1,9 +1,5 @@
-@using Tienda.Models
-@model List<ArticuloCLS>
-@{
-    ViewBag.Title = "Lista de articulos";
-}
-
+@model List<Tienda.Models.ArticuloCLS>
+@{ViewBag.Title = "Lista de articulos";}
 <h1>@ViewBag.Title</h1>
 <div class="text-center mb-2">
   @Html.ActionLink("Agregar Articulo","Agregar","Articulo",null, new {@class="btn btn-primary"})
@@ -11,21 +7,21 @@
 <div class="row">
 @foreach (var articulo in Model)
 {
-<div class="card col" style="width: 18rem;">
-  <img src="/images/no-image-found.png" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">@articulo.NombreArticulo</h5>
-    <p class="card-text">@articulo.Descripcion</p>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">@Html.LabelFor(p=> Model[0].PrecioUnitario): @articulo.PrecioUnitario</li>
-    <li class="list-group-item">@Html.LabelFor(p=> Model[0].Stock): @articulo.Stock</li>
-    <li class="list-group-item">@Html.LabelFor(p=> Model[0].StockExtra): @articulo.StockExtra</li>
-  </ul>
-  <div class="card-body">
-    @Html.ActionLink("Editar","Editar","Articulo", new { id = articulo.CodArticulo}, new {@class = "card-link"})
-    @Html.ActionLink("Eliminar","Eliminar","Articulo", new { id = articulo.CodArticulo}, new {@class = "card-link"})
-  </div>
-</div>
+    <div class="card col" style="width: 18rem;">
+      <img src="/images/@articulo.NombreImagen" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">@articulo.NombreArticulo</h5>
+        <p class="card-text">@articulo.Descripcion</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">@Html.LabelFor(p=> Model[0].PrecioUnitario): @articulo.PrecioUnitario</li>
+        <li class="list-group-item">@Html.LabelFor(p=> Model[0].Stock): @articulo.Stock</li>
+        <li class="list-group-item">@Html.LabelFor(p=> Model[0].StockExtra): @articulo.StockExtra</li>
+      </ul>
+      <div class="card-body">
+        @Html.ActionLink("Editar","Editar","Articulo", new { id = articulo.CodArticulo}, new {@class = "card-link"})
+        @Html.ActionLink("Eliminar","Eliminar","Articulo", new { id = articulo.CodArticulo}, new {@class = "card-link", @id = "link-eliminar", @onClick="ConfirmarEliminacion()"})
+      </div>
+    </div>
 }
 </div>

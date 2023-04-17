@@ -22,6 +22,7 @@ namespace Tienda.Models
         public string? Descripcion { get; set; }
 
         [Display(Name = "Precio por unidad")]
+
         [Required]
         public decimal? PrecioUnitario { get; set; }
 
@@ -32,8 +33,11 @@ namespace Tienda.Models
         [Display(Name = "Existencia de seguridad")]
         [Required]
         public int? StockExtra { get; set; }
-
         [Display(Name = "Imagen")]
-        public byte[]? Imagen { get; set; }
+        [Required(ErrorMessage = "Se necesita el archivo")]
+        public IFormFile? Imagen { get; set; } 
+        public String? NombreImagen { get; set; }
+
+        public int Estado { get; set; }
     }
 }

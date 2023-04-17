@@ -19,13 +19,13 @@ namespace Tienda.Controllers
             using (var db = new TiendaContext())
             {
                 listaCliente = (from cliente in db.Clientes
+                                where cliente.Estado.Equals(1)
                                 select new ClienteCLS()
                                 {
                                     CodCliente = cliente.CodCliente,
                                     Nombre = cliente.Nombre,
                                     Apellidos = cliente.Apellidos,
                                     Empresa = cliente.Empresa,
-                                    FehaNacimiento = cliente.FehaNacimiento,
                                     Provincia = cliente.Provincia,
                                     Puesto = cliente.Puesto,
                                     Cp = cliente.Cp,
@@ -58,13 +58,11 @@ namespace Tienda.Controllers
                 cliente.Cp = oClliente.Cp;
                 cliente.Provincia = oClliente.Provincia;
                 cliente.Telefono = oClliente.Telefono;
-                cliente.FehaNacimiento = oClliente.FehaNacimiento;
                 db.Clientes.Add(cliente);
                 db.SaveChanges();
             }
             return RedirectToAction("Index");
         }
-
         [HttpGet("[action]")]
         public IActionResult Editar(int id)
         {
@@ -80,7 +78,6 @@ namespace Tienda.Controllers
                 oCliente.Cp = cliente.Cp;
                 oCliente.Provincia = cliente.Provincia;
                 oCliente.Telefono = cliente.Telefono;
-                oCliente.FehaNacimiento = cliente.FehaNacimiento;
             }
             return View(oCliente);
         }
@@ -102,7 +99,18 @@ namespace Tienda.Controllers
                 cliente.Cp = oCliente.Cp;
                 cliente.Provincia = oCliente.Provincia;
                 cliente.Telefono = oCliente.Telefono;
-                cliente.FehaNacimiento = oCliente.FehaNacimiento;
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet("[action]")]
+        public IActionResult Eliminar(int id)
+        {
+            using (var db = new TiendaContext())
+            {
+                var cliente = db.Clientes.Where(c => c.CodCliente.Equals(id)).First();
+                cliente.Estado = 0;
                 db.SaveChanges();
             }
             return RedirectToAction("Index");
